@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>S2-2-1</title>
-		<meta name="viewport" content="width=320,user-scalable=no">
+		<meta name="viewport" content="width=320,initial-scale=1.0,minimum-scale=1.0">
 		<style>
 		</style>
 	</head>
@@ -11,9 +11,13 @@
 	<body>
 		<p id="output1">ここの部分が書き換えられます</p>
 
-	<script>
-
-
-	</script>
+		<script>
+		(function() {
+			var output1 = document.getElementById("output1");
+			setTimeout(function() {
+				output1.innerHTML = "書き換えました！";
+			}, 3000);
+		})();
+		</script>
 	</body>
 </html>
