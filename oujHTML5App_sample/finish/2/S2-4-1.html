@@ -9,7 +9,7 @@
 	</head>
 
 	<body>
-		<input type="text" id="input1">
+		<input type="text" id="input1" onkeypress="return pressEnter(event);">
 		<button onclick="change1();">書き換えます</button>
 		<p id="output1">ここの部分が書き換えられます</p>
 		
@@ -17,6 +17,14 @@
 			function change1(){
 				var input1 = document.getElementById("input1").value;
 				document.getElementById("output1").innerHTML = input1;
+			}
+			function pressEnter(e) {
+				var enterKey = 13;
+				if (e.keyCode == enterKey) {
+					change1();
+					return false;
+				}
+				return true;
 			}
 		</script>
 
