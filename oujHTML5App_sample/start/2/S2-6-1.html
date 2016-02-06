@@ -17,9 +17,14 @@
 			var correct1 = 50;
 			function $(id){return document.getElementById(id);}
 			function change1(){
+				setTimeout(function() {
 				var input1 = parseFloat($("input1").value);
-				
-				
+				if (input1 === correct1) {
+					$("output1").innerHTML = "正解";
+				} else {
+					$("output1").innerHTML = "残念";
+				}
+				}, Math.random() * 3000);
 			}
 		</script>
 	</body>
