@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>6-2</title>	
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<style>
+			#memo{width:100%;height:300px;}
+		</style>
+	</head>
+	<body>
+		<h1>メモ帳</h1>
+		<button onclick="set1();">保存</button>
+		<button onclick="get1();">読出</button>
+		<button onclick="remove1();">削除</button>
+		<button onclick="clearAll1();">データを全で削除</button>
+		<textarea id="memo"></textarea>
+		
+		<script>
+			var memo = document.getElementById("memo");
+		
+			function set1(){
+				localStorage.setItem("str",memo.value);
+			}
+			function get1(){
+				var str=localStorage.getItem("str");
+				memo.value=str;
+			}
+			function remove1(){
+				localStorage.removeItem("str");
+			}
+			function clearAll1(){
+				localStorage.clear();
+			}
+		</script>
+	</body>
+</html>

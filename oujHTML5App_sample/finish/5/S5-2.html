@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>5-2</title>
+		<meta name="viewport" content="width=320,user-scalable=no">
+		<style>
+			/*ここはCSSのエリア*/
+		</style>
+
+	</head>
+
+	<body>
+
+		<!-- ページに表示するコンテンツのグループ -->
+		
+		<canvas id="mycanvas" width="300" height="300"></canvas>
+		
+		<script>
+			var canvas = document.getElementById("mycanvas");
+			var c = canvas.getContext("2d");
+
+			// ここに図形の描画のコードを記述します。
+			
+			var finger={x:150,y:150,z:0};
+
+			canvas.addEventListener("touchmove",function(e){
+				e.preventDefault();
+				var rect = e.target.getBoundingClientRect();
+				finger.x = e.touches[0].clientX-rect.left;
+				finger.y = e.touches[0].clientY-rect.top;
+				c.fillStyle="green";
+				c.fillRect(finger.x-2,finger.y-2,4,4);
+			});
+
+		</script>
+	</body>
+</html>

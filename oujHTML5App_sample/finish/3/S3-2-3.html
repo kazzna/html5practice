@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>3-2-3</title>
+		<meta name="viewport" content="width=320,user-scalable=no">
+		<style>
+			/*ここはCSSのエリア*/
+		</style>
+	</head>
+	<body>
+		<input type="text" id="deg1">
+		<button onclick="change1();">ラジアンに変換</button>
+		<p id="output1">結果</p>
+		
+		<script>
+			function $(id){return document.getElementById(id);}
+			function change1(){
+				var deg1 = parseFloat($("deg1").value)
+				var rad1=deg1/180*Math.PI;
+				$("output1").innerHTML = "<p>"+ deg1 +"度は"+ rad1 +"ラジアン"+"<br>"+
+					"sin(" +deg1+ ")=" +Math.sin(rad1) +"<br>"+
+					"cos(" +deg1+ ")=" +Math.cos(rad1) +"<br>"+
+					"tan(" +deg1+ ")=" +Math.tan(rad1) +"</p>";
+			}
+		</script>
+	</body>
+</html>

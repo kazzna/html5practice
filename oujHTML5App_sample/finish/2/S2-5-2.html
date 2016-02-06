@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>S2-5-2</title>
+		<meta name="viewport" content="width=320,user-scalable=no">
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<p id="output1">ここの部分が書き換えられます</p>
+		<button onclick="change1();">足し算する</button>
+		<button onclick="change2();">引き算する</button>
+		
+		<script>
+			var n1 = 10;
+			var n2 = 3;
+			function $(id){return document.getElementById(id);}
+			function change1(){$("output1").innerHTML = n1+n2;}
+			function change2(){$("output1").innerHTML = n1-n2;}
+		</script>
+
+
+	</body>
+</html>

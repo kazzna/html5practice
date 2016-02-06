@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>7-2</title>
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+
+		<style>
+			/*ここはCSSのエリア*/
+		</style>
+
+	</head>
+
+	<body>
+
+		<!-- ページに表示するコンテンツのグループ -->
+		<section>
+			<audio id="myaudio">
+				<source src="audio.mp3">
+			</audio>
+			
+			<button onclick="audio.play();">再生</button>
+			<button onclick="audio.pause();">停止</button>
+			<button onclick="audio.currentTime=0;audio.play();">最初から</button>
+			<button onclick="audio.volume -= 0.2;">音を小さく</button>
+			<button onclick="audio.volume += 0.2;">音を大きく</button>
+			<button onclick="audio.playbackRate += 0.5;">早く</button>	
+			<button onclick="audio.playbackRate -= 0.5;">ゆっくり</button>
+			
+			<div id="info1">ここに情報を表示する</div>
+			
+			<script>
+				var audio =document.getElementById("myaudio");
+				audio.addEventListener("timeupdate",function(){
+					document.getElementById("info1").innerHTML
+						= "再生位置" + audio.currentTime
+						+ "<br>長さ" + audio.duration
+						+ "<br>音量" + audio.volume
+						+ "<br>スピード" + audio.playbackRate;
+				});
+			</script>
+
+		</section>
+		
+		<section>
+	
+			<video id="myvideo" width="320">
+				<source src="video.m4v">
+			</video>
+			
+			<button onclick="video.play();">再生</button>
+			<button onclick="video.pause();">一旦停止 </button>
+			<button onclick="video.currentTime=0;video.play();">最初から</button>
+			<button onclick="video.volume -= 0.2;">音を小さく</button>
+			<button onclick="video.volume += 0.2;">音を大きく</button>
+			<button onclick="video.playbackRate += 0.5;">早く</button>	
+			<button onclick="video.playbackRate -= 0.5;">ゆっくり</button>
+			
+			<div id="info2">ここに情報を表示する</div>
+			
+			<script>
+				var video = document.getElementById("myvideo");
+				video.addEventListener("timeupdate",function(){
+					document.getElementById("info2").innerHTML
+						= "再生位置" + video.currentTime
+						+ "<br>長さ" + video.duration
+						+ "<br>音量" + video.volume
+						+ "<br>スピード" + video.playbackRate;
+				});
+			</script>
+		</section>
+	</body>
+</html>
