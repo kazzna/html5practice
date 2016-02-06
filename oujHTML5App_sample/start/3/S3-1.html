@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>3-1</title>
-		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 		<style>
 			/*ここはCSSのエリア*/
 		</style>
@@ -12,7 +12,21 @@
 		<p id="date1">日付loading...</p>
 
 		<script>
-			
+			(function(){
+				setTimeout(function() {
+					var now = new Date();
+					var y = now.getFullYear();
+					var m = now.getMonth() + 1;
+					var d = now.getDate();
+					var w = now.getDay();
+					var h = now.getHours();
+					var i = now.getMinutes();
+					var s = now.getSeconds();
+					var ms = now.getMilliseconds();
+					document.getElementById("date1").innerHTML =
+						y + "年" + m + "月" + d  + "<br>;
+				}, Math.random() * 3000);
+			})();
 		</script>
 
 	</body>
