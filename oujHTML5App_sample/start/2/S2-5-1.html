@@ -14,9 +14,19 @@
 		<button onclick="change2();">文字の「HTML5」にする</button>
 		
 		<script>
+			var output1 = "output1";
 			function $(id){return document.getElementById(id);}
-			
-			
+			function change(id, html) {
+				setTimeout(function() {
+					$(id).innerHTML = html;
+				}, 3000);
+			}
+			function change1() {
+				change(output1, 5);
+			}
+			function change2() {
+				change(output1, "HTML5");
+			}
 		</script>
 
 	</body>
