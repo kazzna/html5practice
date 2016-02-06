@@ -7,6 +7,9 @@
 		<meta name="viewport" content="width=device-width,user-scalable=no">
 		<style>
 			/*ここはCSSのエリア*/
+			#mycanvas {
+				border: 1px dashed lightgreen;
+			}
 		</style>
 
 	</head>
@@ -15,14 +18,58 @@
 
 		<!-- ページに表示するコンテンツのグループ -->
 		
-		<canvas id="mycanvas" width="300" height="300"></canvas>
+		<canvas id="mycanvas" width="500" height="300"></canvas>
 		
 		<script>
-			var canvas = document.getElementById("mycanvas");
-			var c = canvas.getContext("2d");
+			function fillRect(color, x, y, w, h) {
+				setTimeout(function() {
+					var canvas = document.getElementById("mycanvas");
+					var c = canvas.getContext("2d");
+					c.fillStyle = color;
+					c.fillRect(x, y, w, h);
+				}, Math.random() * 3000);
+			}
+			
+			function fill(color, points) {
+				setTimeout(function() {
+					var canvas = document.getElementById("mycanvas");
+					var c = canvas.getContext("2d");
+					c.fillStyle = color;
+					c.beginPath();
+					c.moveTo(points[0].x, points[0].y);
+					for (var i = 1; i < points.length; i++) {
+						c.lineTo(points[i].x, points[i].y);
+					}
+					c.closePath();
+					c.fill();
+				}, Math.random() * 3000);
+			}
+			
+			function arc(x, y, r, clockwise) {
+				return function(color, start, end) {
+					setTimeout(function() {
+						var canvas = document.getElementById("mycanvas");
+						var c = canvas.getContext("2d");
+						c.fillStyle = color;
+						c.beginPath();
+						c.moveTo(x, y);
+						c.arc(x, y, r, start, end, clockwise);
+						c.closePath()
+						c.fill();
+					}, Math.random() * 3000);
+				}
+			}
 
 			// ここに図形の描画のコードを記述します。
-	
+			fillRect("yellow", 100, 50, 50, 50);
+			fillRect("lightgreen", 50, 100, 50, 50);
+			fillRect("lightblue", 100, 100, 50, 50);
+			fillRect("red", 50, 50, 50, 50);
+
+			fill("green", [{x: 150, y: 0}, {x: 100, y: 100}, {x: 210, y: 30}, {x: 90, y: 30}, {x: 200, y: 100}]);
+			var angle1 = 10 / 180 * Math.PI;
+			var angle2 = 250 / 180 * Math.PI;
+			arc(150, 150, 40, false)("skyblue", angle1, angle2);
 		</script>
 	</body>
 </html>
