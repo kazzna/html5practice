@@ -10,8 +10,7 @@
 
 	<body>
 		<p id="output1">ここの部分が書き換えられます</p>
-		<button onclick="change1();">数字の「5」にする</button>
-		<button onclick="change2();">文字の「HTML5」にする</button>
+		<button onclick="change1();">足し算</button>
 		
 		<script>
 			var output1 = "output1";
@@ -19,13 +18,12 @@
 			function change(id, html) {
 				setTimeout(function() {
 					$(id).innerHTML = html;
-				}, 3000);
+				}, Math.random() * 3000);
 			}
 			function change1() {
-				change(output1, 5);
-			}
-			function change2() {
-				change(output1, "HTML5");
+				var n1 = "得点: ";
+				var n2 = 60;
+				change(output1, n1 + n2);
 			}
 		</script>
 
