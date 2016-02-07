@@ -6,6 +6,9 @@
 		<title>5-1</title>
 		<style>
 			/*ここはCSSのエリア*/
+			#mycanvas {
+				border: 4px inset gainsboro;
+			}
 		</style>
 
 	</head>
@@ -21,14 +24,32 @@
 			var c = canvas.getContext("2d");
 
 			// ここに図形の描画のコードを記述します。
+			var random16 = function() {
+				var a = parseInt(Math.random() * 256).toString(16);
+				return ("0" + a).slice(-2);
+			};
 			
-			var pos={x:150,y:150};
+			var draw = function(e){
+				setTimeout(function() {
+					var rect = e.target.getBoundingClientRect();
+					var pos = {};
+					pos.x = e.clientX - rect.left;
+					pos.y = e.clientY - rect.top;
+					var r = random16();
+					var g = random16();
+					var b = random16();
+					c.fillStyle = "#" + r + g + b;
+					c.fillRect(pos.x - 8, pos.y - 8, 4, 4);
+				}, Math.random() * 3000);
+			};
+			
+			canvas.addEventListener("mousedown", function() {
+				canvas.addEventListener("mousemove", draw, false);
+			}, false);
 
-			canvas.addEventListener("mousemove",function(e){
-			
-			
-			});
-
+			canvas.addEventListener("mouseup", function() {
+				canvas.removeEventListener("mousemove", draw, false);
+			}, false);
 		</script>
 	</body>
 </html>
