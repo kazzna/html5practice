@@ -26,16 +26,14 @@
 			// ここに図形の描画のコードを記述します。
 			var random16 = function() {
 				var a = parseInt(Math.random() * 256).toString(16);
-				console.log(a);
 				var b = ("0" + a).slice(-2);
-				console.log(b);
 				return b;
 			};
 			
 			var draw = function(e){
 				var rect = e.target.getBoundingClientRect();
 				var pos = {};
-				pos.x = e.clientX - rect.left - 8;
+				pos.x = e.clientX - rect.left - 4;
 				pos.y = e.clientY - rect.top - 8;
 				var r = random16();
 				var g = random16();
@@ -50,7 +48,8 @@
 				}, Math.random() * 3000);
 			};
 			
-			canvas.addEventListener("mousedown", function() {
+			canvas.addEventListener("mousedown", function(e) {
+				draw(e);
 				canvas.addEventListener("mousemove", draw, false);
 			}, false);
 

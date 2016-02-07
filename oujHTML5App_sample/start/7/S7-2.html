@@ -20,19 +20,19 @@
 				<source src="audio.mp3">
 			</audio>
 			
-			<button onclick="">再生</button>
-			<button onclick="">停止</button>
-			<button onclick="">最初から</button>
-			<button onclick="">音を小さく</button>
-			<button onclick="">音を大きく</button>
-			<button onclick="">早く</button>	
-			<button onclick="">ゆっくり</button>
+			<button onclick="audio.play();">再生</button>
+			<button onclick="audio.pause();">停止</button>
+			<button onclick="audio.currentTime=0;">最初から</button>
+			<button onclick="audio.valume -= 0.2;">音を小さく</button>
+			<button onclick="audio.valume += 0.2;">音を大きく</button>
+			<button onclick="audio.playbackRate += 0.5;">早く</button>	
+			<button onclick="audio.playbackRate -= 0.5;;">ゆっくり</button>
 			
 			<div id="info1">ここに情報を表示する</div>
 			
 			<script>
-				var audio =document.getElementById("myaudio");
-				audio.addEventListener("timeupdate",function(){
+				var audio = document.getElementById("myaudio");
+				audio.addEventListener("timeupdate", function() {
 					document.getElementById("info1").innerHTML
 						= "再生位置" + audio.currentTime
 						+ "<br>長さ" + audio.duration
@@ -61,7 +61,7 @@
 			
 			<script>
 				var video = document.getElementById("myvideo");
-				video.addEventListener("timeupdate",function(){
+				video.addEventListener("timeupdate", function() {
 					document.getElementById("info2").innerHTML
 						= "再生位置" + video.currentTime
 						+ "<br>長さ" + video.duration
