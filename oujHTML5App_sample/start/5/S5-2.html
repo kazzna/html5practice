@@ -20,15 +20,40 @@
 		<script>
 			var canvas = document.getElementById("mycanvas");
 			var c = canvas.getContext("2d");
+			var random16 = function() {
+				var a = parseInt(Math.random() * 256).toString(16);
+				console.log(a);
+				var b = ("0" + a).slice(-2);
+				console.log(b);
+				return b;
+			};
+			var draw = function(rd) {
+				return function(e) {
+					e.preventDefault();
+					var rect = e.target.getBoundingClientRect();
+					var pos = {};
+					for (var i = 0; i < e.touches.length; i++) {
+						pos.x = e.touches[i].clientX - rect.left - 8;
+						pos.y = e.touches[i].clientY - rect.top - 8;
+						var r = random16();
+						var g = random16();
+						var b = random16();
+						setTimeout(function() {
+							c.beginPath();
+							c.fillStyle = "#" + r + g + b;
+							c.moveTo(pos.x, pos.y);
+							c.arc(pos.x, pos.y, rd, 0, 2 * Math.PI, true);
+							c.closePath();
+							c.fill();
+						}, Math.random() * 3000);
+					}
+				}
+			};
 
 			// ここに図形の描画のコードを記述します。
 			
-			var finger={x:150,y:150,z:0};
-
-			canvas.addEventListener("touchmove",function(e){
-				
-				
-			});
+			canvas.addEventListener("touchmove", draw(2), false);
+			canvas.addEventListener("touchstart", draw(2.3), false);
 
 		</script>
 	</body>

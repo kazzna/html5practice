@@ -26,20 +26,27 @@
 			// ここに図形の描画のコードを記述します。
 			var random16 = function() {
 				var a = parseInt(Math.random() * 256).toString(16);
-				return ("0" + a).slice(-2);
+				console.log(a);
+				var b = ("0" + a).slice(-2);
+				console.log(b);
+				return b;
 			};
 			
 			var draw = function(e){
+				var rect = e.target.getBoundingClientRect();
+				var pos = {};
+				pos.x = e.clientX - rect.left - 8;
+				pos.y = e.clientY - rect.top - 8;
+				var r = random16();
+				var g = random16();
+				var b = random16();
 				setTimeout(function() {
-					var rect = e.target.getBoundingClientRect();
-					var pos = {};
-					pos.x = e.clientX - rect.left;
-					pos.y = e.clientY - rect.top;
-					var r = random16();
-					var g = random16();
-					var b = random16();
+					c.beginPath();
 					c.fillStyle = "#" + r + g + b;
-					c.fillRect(pos.x - 8, pos.y - 8, 4, 4);
+					c.moveTo(pos.x, pos.y);
+					c.arc(pos.x, pos.y, 2, 0, 2 * Math.PI, true);
+					c.closePath();
+					c.fill();
 				}, Math.random() * 3000);
 			};
 			
