@@ -10,26 +10,32 @@
 	</head>
 	<body>
 		<h1>メモ帳</h1>
-		<button onclick="set1();">保存</button>
-		<button onclick="get1();">読出</button>
+		<div>
+		<button onclick="save1();">保存</button>
+		<button onclick="load1();">読出</button>
 		<button onclick="remove1();">削除</button>
 		<button onclick="clearAll1();">データを全で削除</button>
+		</div>
+		<div>
+			保存名: <input id="title" type="text" />
+		</div>
 		<textarea id="memo"></textarea>
 		
 		<script>
+			var title = document.getElementById("title");
 			var memo = document.getElementById("memo");
 		
-			function set1(){
-				
+			function save1() {
+				localStorage.setItem(title.value, memo.value);
 			}
-			function get1(){
-				
+			function load1() {
+				memo.value = localStorage.getItem(title.value);
 			}
-			function remove1(){
-				
+			function remove1() {
+				localStorage.removeItem(title.value);
 			}
-			function clearAll1(){
-				
+			function clearAll1() {
+				localStorage.clear();
 			}
 		</script>
 	</body>
