@@ -7,6 +7,9 @@
 		<meta name="viewport" content="width=device-width,user-scalable=no">
 		<style>
 			/*ここはCSSのエリア*/
+			#mycanvas {
+				border: 1px dashed lightgray;
+			}
 		</style>
 
 	</head>
@@ -37,12 +40,12 @@
 			//c.fill();													//塗る
 			
 			//直線
-			//c.beginPath();
-			//c.moveTo(200,0);
-			//c.lineTo(300,100);
-			//c.lineWidth = 1;										//線の幅
-			//c.strokeStyle = "blue";							//線の色
-			//c.stroke();												//線を引く
+			c.beginPath();
+			c.moveTo(200,0);
+			c.lineTo(300,100);
+			c.lineWidth = 1;										//線の幅
+			c.strokeStyle = "blue";							//線の色
+			c.stroke();												//線を引く
 			
 			//円弧
 			//var angle1 = 10/180 * Math.PI ;
@@ -55,19 +58,19 @@
 			//c.fill();
 			
 			//曲線
-			//c.beginPath();
-			//c.moveTo(200,150);										//開始点の座標
-			//c.quadraticCurveTo(250,0,300,150);			//制御点と終了点の座標
-			//c.strokeStyle = "yellow";
-			//c.lineWidth = 1;
-			//c.stroke();
+			c.beginPath();
+			c.moveTo(200,150);										//開始点の座標
+			c.quadraticCurveTo(250,0,300,150);			//制御点と終了点の座標
+			c.strokeStyle = "darkgray";
+			c.lineWidth = 1;
+			c.stroke();
 		
-			//c.beginPath();
-			//c.moveTo(0,250); 										//開始点の座標
-			//c.bezierCurveTo(30,0,60,300,100,250);		//制御点１，２と終了点の座標
-			//c.strokeStyle = "yellow";
-			//c.lineWidth = 1;
-			//c.stroke();
+			c.beginPath();
+			c.moveTo(0,250); 										//開始点の座標
+			c.bezierCurveTo(30,0,60,300,100,250);		//制御点１，２と終了点の座標
+			c.strokeStyle = "darkblue";
+			c.lineWidth = 1;
+			c.stroke();
 			
 			//グラデーション
 			//var mycolor = c.createLinearGradient(0,200,0,250);
@@ -83,10 +86,10 @@
 			//c.fillText("Hello",200,300);						//文字の描画
 			
 			//画像
-			//var img = new Image();
-			//img.src = "image.png";
+			var img = new Image();
+			img.src = "image.png";
 			//img.onload = function(){
-			//	c.drawImage(img, 100, 100);
+				setTimeout(function(){c.drawImage(img, 100, 100)}, 1000);
 			//}
 
 		</script>
